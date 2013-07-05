@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int factorial(int number);
+int factorial(signed int number);
 
 int main()
 {
@@ -8,7 +8,7 @@ int main()
 
 }
 
-int factorial(int number)
+int factorial(signed int number)
 {
   if(number <= 1)
   {
