@@ -1,0 +1,16 @@
+
+            if @columns[@x][board.get(@x,@y)] > 1 
+              puts "column"
+              puts "x: #{@x} y: #{@y} number: #{board.get(@x,@y)} value: #{ @columns[@x][board.get(@x,@y)]}"
+              return false
+            end
+
+            if @rows[@y][board.get(@x,@y)] > 1
+              puts @rows[@y][board.get(@x,@y)]
+              return false
+            end
+
+            if @blocks[@block_values[@x][@y]][board.get(@x,@y)] > 1
+              puts @blocks[@block_values[@x][@y]][board.get(@x,@y)]
+              return false
+            end

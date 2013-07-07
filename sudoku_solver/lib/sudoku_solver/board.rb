@@ -1,5 +1,6 @@
 module SudokuSolver
   class Board
+    attr_accessor :mutable_pairs
     def initialize
       @my_board_matrix = [[0,0,0,0,0,0,0,0,0],
                          [0,0,0,0,0,0,0,0,0],
@@ -10,6 +11,7 @@ module SudokuSolver
                          [0,0,0,0,0,0,0,0,0],
                          [0,0,0,0,0,0,0,0,0],
                          [0,0,0,0,0,0,0,0,0]]
+      @mutable_pairs = Array.new
     end
 
     def get(x,y)
