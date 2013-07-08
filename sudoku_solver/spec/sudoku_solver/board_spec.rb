@@ -24,5 +24,23 @@ describe SudokuSolver do
         lambda {@board.put(9,9,1)}.should raise_error(RuntimeError, "input outside of board")
       end
     end
+
+    context "a board with mutable pairs" do
+      before do
+        @board = SudokuSolver::Board.new
+        @board.mutable_pairs.push([0,0])
+        @board_children = @board.get_children()
+      end
+
+      it "should be able to return children" do
+        @board_children.size.should == 9
+      end
+
+      it "should have all boards with the next value 1 through 9" do
+        @board_children[0].get(0,0).should == 1
+        
+      end
+    end
+
   end
 end
