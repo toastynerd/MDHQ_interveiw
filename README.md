@@ -6,4 +6,4 @@ To use the the sudoku solver run
 <code>
 ruby -b <board_name>.csv
 </code>
-The solution will be written to solution.csv
+from the sudoku/ folder. The solution will be written to solution.csv
