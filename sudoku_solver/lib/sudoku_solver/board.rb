@@ -3,20 +3,25 @@ module SudokuSolver
     attr_accessor :mutable_pairs
     attr_accessor :my_board_matrix
     def initialize(options = {})
-      @my_board_matrix = options[:board_matrix] || [[0,0,0,0,0,0,0,0,0],
-                                          [0,0,0,0,0,0,0,0,0],
-                                          [0,0,0,0,0,0,0,0,0],
-                                          [0,0,0,0,0,0,0,0,0],
-                                          [0,0,0,0,0,0,0,0,0],
-                                          [0,0,0,0,0,0,0,0,0],
-                                          [0,0,0,0,0,0,0,0,0],
-                                          [0,0,0,0,0,0,0,0,0],
-                                          [0,0,0,0,0,0,0,0,0]]
-      @mutable_pairs = options[:mutable_pairs] || Array.new
+      unless options.size == 2
+        @my_board_matrix =                 [[0,0,0,0,0,0,0,0,0],
+                                            [0,0,0,0,0,0,0,0,0],
+                                            [0,0,0,0,0,0,0,0,0],
+                                            [0,0,0,0,0,0,0,0,0],
+                                            [0,0,0,0,0,0,0,0,0],
+                                            [0,0,0,0,0,0,0,0,0],
+                                            [0,0,0,0,0,0,0,0,0],
+                                            [0,0,0,0,0,0,0,0,0],
+                                            [0,0,0,0,0,0,0,0,0]]
+        @mutable_pairs =  Array.new
+      else
+        @my_board_matrix = Marshal.load(Marshal.dump(options[:board_matrix]))
+        @mutable_pairs =  Marshal.load(Marshal.dump(options[:mutable_pairs]))
+      end
     end
 
     def clone
-      SudokuSolver::Board.new({:board_matrix => @my_board_matrix.clone, :mutable_pairs => @mutable_pairs.clone})
+      Board.new({:board_matrix => @my_board_matrix.clone, :mutable_pairs => @mutable_pairs.clone})
     end
 
     def get(x,y)
@@ -48,6 +53,15 @@ module SudokuSolver
       else
         false
       end
+    end
+
+    def display
+      @x = 0
+      while @x < 10
+        puts @my_board_matrix[@x]
+        @x += 1
+      end
+
     end
 
   end

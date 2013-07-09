@@ -27,9 +27,9 @@ describe SudokuSolver do
 
     context "a board with mutable pairs" do
       before do
-        @board = SudokuSolver::Board.new
-        @board.mutable_pairs.push([0,0])
-        @board_children = @board.get_children()
+        board = SudokuSolver::Board.new
+        board.mutable_pairs.push([0,0])
+        @board_children = board.get_children
       end
 
       it "should be able to return children" do
@@ -37,7 +37,7 @@ describe SudokuSolver do
       end
 
       it "should have all boards with the next value 1 through 9" do
-        @board_children[0].get(0,0).should == 1
+        @board_children[5].get(0,0).should == 6
         
       end
     end

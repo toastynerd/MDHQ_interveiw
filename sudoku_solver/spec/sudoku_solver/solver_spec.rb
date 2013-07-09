@@ -6,7 +6,7 @@ describe SudokuSolver do
       it "should be solvable" do
         @board = SudokuSolver::Loader.load_board("boards/unsolved_board.csv")
         SudokuSolver::Checker.solved?(@board).should_not be_true
-        SudokuSolver::Solver.solve!(@board)
+        @board = SudokuSolver::Solver.solve!(@board)
         SudokuSolver::Checker.solved?(@board).should be_true
       end
     end
