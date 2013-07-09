@@ -42,12 +42,15 @@ module SudokuSolver
 
     def get_children
       unless @mutable_pairs.empty?
+        @distribution = SudokuSolver::Checker.get_distribution(self)
         current_pair = @mutable_pairs.pop()
         @boards = []
         (1...10).each do |number|
-          temp_board = self.clone 
-          temp_board.put(current_pair[0],current_pair[1], number)
-          @boards.push(temp_board)
+          unless @distribution[:columns][current_pair[0]][number] > 0 && @distribution[:rows][current_pair[1]][number] > 0 && @distribution[:blocks][@distribution[:block_values][current_pair[0]][current_pair[1]]][number]
+            temp_board = self.clone 
+            temp_board.put(current_pair[0],current_pair[1], number)
+            @boards.push(temp_board)
+          end
         end
         @boards
       else

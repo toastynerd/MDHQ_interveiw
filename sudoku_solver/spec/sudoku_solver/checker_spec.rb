@@ -23,4 +23,23 @@ describe SudokuSolver do
       end
     end
   end
+  
+  describe "get distribution" do
+    before do
+      @board = SudokuSolver::Loader.load_board("boards/solved_board.csv")
+      @distribution = SudokuSolver::Checker.get_distribution(@board)
+    end
+
+    it "should return an accurate column distribution" do
+      @distribution[:columns][1][1].should equal(1)
+    end
+
+    it "should return an accurate row distribution" do
+      @distribution[:rows][1][1].should equal(1)
+    end
+
+    it "should return an accurate block distribution" do
+      @distribution[:blocks][1][1].should equal(1)
+    end
+  end
 end
