@@ -1,35 +1,34 @@
 1) What does O(n) mean? O(n^2)
 These are both methods to measure the growth of a algorithm. The first,
 O(n) would describe a linear growth pattern. Essentially, the time an
-algorithm takes to return with O(n) growth, grows at a constant rate. An
+algorithm with O(n) growth takes to complete, grows at a constant rate as n increases. An
 example of an operation with O(n) growth would be searching through an
 array for a specific piece of data. You start at array[0] and in the
 worst case scenario you have check up to array[n] in order to find the
 piece of data.
 O(n^2) represents an algorithm with exponential growth. An examle of
 this would be two nesting for loops that both start at 0 and have an
-upper bound of n. For every number 0..n you have to search through 0..n
+upper bound of n. For every number 0...n in the outer loop you have to search through 0...n
 in the inner loop. This gives a growth rate of n^2.
-
 
 2) Describe the Quick Sort algorithm
 A quick sort algorithm can be imagined to work a lot like sorting
 through a hand of cards. Imagine you have a hand of cards, in your left
-hand, you hold the cards that you've already sorted. In your right you
+hand you hold the cards that you've already sorted. In your right you
 hold the cards that you still need to sort. You take one card from your
-right hand and starting with the right most card in you left hand
-compare it to every hard until you find a card that it's less than, and
+right hand and starting with the right most card in your left hand
+compare it to every card until you find a card that it's less than, and
 that's where you place the card. This continues until all cards have
 been placed in the correct order. The quick sort algorithm has a growth
-rate of O(n^2) because at the worst case scenario--a reverse sorted
-group of data-- you'll have to compare each piece of data to every other
+rate of O(n^2) because at the worst case scenario-a reverse sorted
+group of data- you'll have to compare each piece of data to every other
 piece of data.
 
 3)In C, what is a pointer?
 A pointer in C is an address to a memory location. This differs from a
-variable because the pointer does not contain the actual data is stored
+variable because the pointer does not contain the actual data that is stored
 in the specified memory location. It can be thought of in same manner as
-a symbolic link on linux or unix machine, or a shortcut on a windows
+a symbolic link on a linux or unix machine, or a shortcut on a windows
 machine. The pointer can show you where that data resides but if you
 delete the pointer that piece of data still exists.
 
@@ -44,7 +43,7 @@ the heap must be allocated and deallocated as needed by the program.
 5)What is the purpose of a garbage collector?
 A garbage collector is used to free memory when a program no longer
 needs it. This usually is neccesary when a variable is dereferenced or
-pointer is no longer needed. These actions can leave a spot for variable
-allocated in memory without actually having a means of accessign that
+pointer is deleted.  These actions can leave a spot for a variable
+allocated in memory without actually having a means of accessing that
 data in the program.
 

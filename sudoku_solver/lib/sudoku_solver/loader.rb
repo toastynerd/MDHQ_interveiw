@@ -28,5 +28,14 @@ module SudokuSolver
         raise "no file specified" 
       end
     end
+
+    def self.write_solution(board)
+      CSV.open("solution.csv", "wb") do |csv|
+        board.my_board_matrix.each do |row|
+          csv << row
+        end
+      end
+
+    end
   end
 end
