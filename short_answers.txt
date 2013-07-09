@@ -1,4 +1,4 @@
-1) What does O(n) mean? O(n^2)
+1) What does O(n) mean? O(n^2) 
 These are both methods to measure the growth of a algorithm. The first,
 O(n) would describe a linear growth pattern. Essentially, the time an
 algorithm with O(n) growth takes to complete, grows at a constant rate as n increases. An
