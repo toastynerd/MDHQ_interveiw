@@ -46,7 +46,7 @@ module SudokuSolver
         current_pair = @mutable_pairs.pop()
         @boards = []
         (1...10).each do |number|
-          unless @distribution[:columns][current_pair[0]][number] > 0 && @distribution[:rows][current_pair[1]][number] > 0 && @distribution[:blocks][@distribution[:block_values][current_pair[0]][current_pair[1]]][number]
+          unless @distribution[:columns][current_pair[0]][number] > 0 || @distribution[:rows][current_pair[1]][number] > 0 || @distribution[:blocks][@distribution[:block_values][current_pair[0]][current_pair[1]]][number]
             temp_board = self.clone 
             temp_board.put(current_pair[0],current_pair[1], number)
             @boards.push(temp_board)
