@@ -2,31 +2,44 @@ require 'csv'
 module SudokuSolver
   class Loader
     def self.load_board(file_name)
-      unless file_name.empty?
-        @board = SudokuSolver::Board.new
-        @y = 0 
-        CSV.foreach(file_name) do |row|
-          @x = 0
-          row.each do |item|
-            unless item == "-"
-              @board.put(@x,@y,item.to_i)
-            else
-              @board.put(@x,@y,0)
-              @board.mutable_pairs.push([@x,@y])
-            end
-            @x += 1
+      @board = SudokuSolver::Board.new
+      @lines = []
+      if file_name == ARGF
+        ARGF.readlines.each do |line|
+          line.split(',').each do |item|
+            @lines << item
           end
-          @y += 1
+        end 
+      else
+        if file_name.empty?
+          raise "no file specified"
+        end
+        CSV.foreach(file_name) do |row|
+          row.each do |item|
+            @lines << item
+          end
+        end
+      end
+        @x = 0
+        @y = 0
+        @lines.each do |item| 
+          if item == "-" || item == "-,"
+            item = 0
+            @board.mutable_pairs << [@x,@y]
+          end
+          @board.put(@x,@y,item.to_i)
+          @x += 1
+          if @x > 8
+            @x = 0
+            @y += 1
+          end
         end
 
-        if @x == 9 && @y == 9
+        if @y == 9
           return @board
         else
           raise "file did not contain a 9 by 9 sudoku board"
         end
-      else
-        raise "no file specified" 
-      end
     end
 
     def self.write_solution(board)
